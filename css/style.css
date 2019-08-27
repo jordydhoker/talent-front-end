@@ -1,7 +1,3 @@
-html {
-  font-size: 62.5%;
-}
-
 html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -50,7 +46,7 @@ td, th {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -71,8 +67,6 @@ nav {
 
 nav a {
   padding: 20px;
-  font-size: 1.6rem;
-  line-height: 1.6rem;
   color: black;
   text-decoration: none;
 }
@@ -86,13 +80,32 @@ nav .current-page {
 }
 
 h1 {
-  font-size: 3rem;
-  margin: 2rem 0;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.post {
+  width: 100%;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.post a {
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.post span {
+  color: #555;
 }
 
 table, tr {
   width: 100%;
-  font-size: 1.6rem;
 }
 
 table a, tr a {
@@ -130,10 +143,6 @@ th, td {
 
 .name-column {
   width: 50%;
-}
-
-.add-link {
-  font-size: 1.6rem;
 }
 
 .add-link + table {
