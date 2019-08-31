@@ -7,19 +7,22 @@
     <title>Posts</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
     <main>
         <nav>
             <a href="index.html" class="current-page">Posts</a>
-            <a id="profileLink">Profile</a>
+            <a href="register.html">Register</a>
         </nav>
-        <h1>Posts</h1>
-        <div id="posts"></div>
+        <h1>Login</h1>
+        <div class="form">
+            <label>Email</label>
+            <input type="text" id="email" name="email">
+            <label>Password</label>
+            <input type="password" id="password" name="password">
+            <button onclick="login()">Inloggen</button>
+        </form>
     </main>
-    <script>
-    getCurrentUser();
-    getPosts();
-    </script>
 </body>

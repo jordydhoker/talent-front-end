@@ -2,6 +2,7 @@
 
 $medium-gray: #cccccc;
 $light-gray: #dddddd;
+$blue: #4e5aff;
 
 body {
   font-family: "Roboto", sans-serif;
@@ -35,63 +36,74 @@ h1 {
   margin: 1rem 0;
 }
 
-.post{
-    width: 100%;
-    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
-    // border: 1px solid #cccccc;
-    padding: 20px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    a{
-        font-weight: 700;
-        margin-bottom: 10px;
-        margin-right: 5px;
-        display: inline-block;
-    }
-    span{
-        color: #555;
-    }
-}
-
-table, tr {
+.post {
   width: 100%;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  // border: 1px solid #cccccc;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
   a {
-    visibility: hidden;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+  }
+  span {
+    color: #555;
   }
 }
 
-tr {
-  border-bottom: 1px solid $medium-gray;
-  &:first-child, &:last-child {
-    border: none;
-  }
-  &:hover {
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    padding: 10px;
     background-color: $light-gray;
-    a {
-      visibility: visible;
-    }
+    border: none;
+    border-radius: 2px;
+  }
+  button {
+    padding: 10px;
+    background-color: $blue;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    border: none;
+    border-radius: 2px;
+  }
+  label {
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 }
 
-th {
-  font-weight: 700;
-  background-color: $medium-gray;
-}
-
-th, td {
-  padding: 5px;
-}
-
-.id-column {
-  width: 30px;
-}
-
-.name-column {
-  width: 50%;
-}
-
-.add-link {
-  & + table {
+#profile {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  &::after{
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+    background-color: $medium-gray;
+  }
+  span {
+    margin-bottom: 10px;
     margin-top: 20px;
   }
 }

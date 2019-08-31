@@ -1,18 +1,75 @@
+//const hostName = "https://jordy-dhoker-talent.herokuapp.com";
+const hostName = "http://localhost:3000";
+
 async function getPosts() {
-  const { data } = await axios.get("https://jordy-dhoker-talent.herokuapp.com/posts");
+  const { data } = await axios.get(hostName + "/posts");
   buildPosts(data);
 }
 
+async function initProfile(){
+  const userId = document.location.search.replace("?", "");
+  let user = await axios.get(hostName + "/user/" + userId);
+  user = user.data;
+  let posts = await axios.get(hostName + "/posts/user/" + userId);
+  posts = posts.data
+  user.posts = posts;
+  buildUser(user);
+  buildPosts(posts);
+}
+
+async function getCurrentUser(){
+  if(document.cookie.token){
+    const { data } = await axios.get(hostName + "/user/current");
+    document.getElementById("profileLink").href = "./user?" + data._id;
+  }
+}
+
+function buildUser(user) {
+  document.getElementById("profile").innerHTML =
+    "<span>Name</span><b>" +
+    user.name +
+    "</b><span>Email</span><b>" +
+    user.email +
+    "</b><span>Date joined</span><b>" +
+    new Date(user.createdAt).toLocaleTimeString("nl", {
+      hour: "2-digit",
+      minute: "2-digit",
+      day: "numeric",
+      month: "long"
+    }) +
+    "</b><span>Amount of posts</span><b>" +
+    user.posts.length +
+    "</b>";
+}
+
 function buildPosts(posts) {
-  let postString = ""
+  let postString = "";
   posts.forEach(post => {
-    postString += '<div class="post"><a>'
-            + post.user
-            + '</a><span>'
-            + post.createdAt
-            + '</span><p>'
-            + post.text.toString()
-            + '</p></div>';
+    postString +=
+      '<div class="post"><a href="./user.html?' +
+      post.user._id +
+      '">' +
+      post.user.name +
+      "</a><span>" +
+      new Date(post.createdAt).toLocaleTimeString("nl", {
+        hour: "2-digit",
+        minute: "2-digit",
+        day: "numeric",
+        month: "long"
+      }) +
+      "</span><p>" +
+      post.text.toString() +
+      "</p></div>";
   });
   document.getElementById("posts").innerHTML = postString;
+}
+
+async function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const { data } = await axios.post(hostName + "/user/login", { email, password });
+  document.cookie = "token=" + data.token;
+  debugger;
+  window.location = window.location.pathname.replace("login", "index");
 }

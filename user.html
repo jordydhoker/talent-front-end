@@ -1,5 +1,4 @@
 <!doctype html>
-<html lang="en">
 <head>
     <meta charset="utf-8">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -12,14 +11,15 @@
 <body>
     <main>
         <nav>
-            <a href="index.html" class="current-page">Posts</a>
-            <a id="profileLink">Profile</a>
+            <a href="index.html">Posts</a>
+            <a href="user.html" class="current-page">Profile</a>
         </nav>
         <h1>Posts</h1>
+        <div id="profile"></div>
         <div id="posts"></div>
     </main>
     <script>
     getCurrentUser();
-    getPosts();
+    initProfile();
     </script>
 </body>
