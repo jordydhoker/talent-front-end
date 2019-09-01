@@ -87,12 +87,12 @@ async function login() {
   window.location = window.location.pathname.replace("login", "index");
 }
 
-async function register() {
+async function signup() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const { data } = await axios.post(hostName + "/user/register", { name, email, password });
+  const { data } = await axios.post(hostName + "/user/signup", { name, email, password });
   document.cookie = "token=" + data.token + ";Fri, 19 Jun 2022 20:47:11 UTC;path=/";
   window.location = window.location.pathname.replace("register", "index");
 }
