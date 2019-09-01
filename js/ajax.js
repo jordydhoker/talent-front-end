@@ -6,21 +6,25 @@ async function getPosts() {
   buildPosts(data);
 }
 
-async function initProfile(){
+async function initProfile() {
   const userId = document.location.search.replace("?", "");
   let user = await axios.get(hostName + "/user/" + userId);
   user = user.data;
   let posts = await axios.get(hostName + "/posts/user/" + userId);
-  posts = posts.data
+  posts = posts.data;
   user.posts = posts;
   buildUser(user);
   buildPosts(posts);
 }
 
-async function getCurrentUser(){
-  if(document.cookie.token){
+async function getCurrentUser() {
+  if (document.cookie.token) {
     const { data } = await axios.get(hostName + "/user/current");
-    document.getElementById("profileLink").href = "./user?" + data._id;
+    document.getElementById("nav").innerHTML +=
+      '<a href="' + "./user.html?" + data._id + '">Profile</a>';
+  } else {
+    document.getElementById("nav").innerHTML +=
+      '<a href="./login.html">Login</a><a href="./register.html">Register</a>';
   }
 }
 
@@ -69,7 +73,7 @@ async function login() {
   const password = document.getElementById("password").value;
 
   const { data } = await axios.post(hostName + "/user/login", { email, password });
-  document.cookie = "token=" + data.token;
+  document.cookie = "token=" + data.token + ";Fri, 19 Jun 2022 20:47:11 UTC;path=/";
   debugger;
   window.location = window.location.pathname.replace("login", "index");
 }
