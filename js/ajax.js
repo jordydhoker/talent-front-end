@@ -45,6 +45,13 @@ async function getCurrentUser() {
         '<a href="' + "./user.html?" + data._id + '">Profile</a>';
     }
     document.getElementById("nav").innerHTML += '<a href="./logout.html">Logout</a>';
+
+    const createPostElement = document.getElementById("createPost");
+    if(createPostElement){
+      createPostElement.innerHTML = `<h2>New post</h2>
+      <textarea name="text" id="text"></textarea>
+      <button onclick="createPost()">Post</button>`
+    }
   } else {
     document.getElementById("nav").innerHTML +=
       '<a href="./login.html">Login</a><a href="./register.html">Register</a>';
