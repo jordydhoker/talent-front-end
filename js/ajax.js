@@ -18,8 +18,9 @@ async function initProfile() {
 }
 
 async function getCurrentUser() {
-  if (getCookie('token')) {
-    const { data } = await axios.get(hostName + "/user/current");
+  const token = getCookie("token");
+  if (token) {
+    const { data } = await axios.get(hostName + "/user/current",{ headers: { Authorization: `Bearer ${token}` } });
     document.getElementById("nav").innerHTML +=
       '<a href="' + "./user.html?" + data._id + '">Profile</a>';
   } else {
@@ -78,14 +79,13 @@ async function login() {
   window.location = window.location.pathname.replace("login", "index");
 }
 
-
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
+  var ca = decodedCookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) == " ") {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
