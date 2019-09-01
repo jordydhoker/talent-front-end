@@ -8,6 +8,7 @@ async function getPosts() {
 
 async function createPost() {
   const text = document.getElementById("text").value;
+  const token = getCookie("token");
   await axios.post(
     hostName + "/posts",
     { text },
