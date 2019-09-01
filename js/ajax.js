@@ -71,7 +71,7 @@ function buildUser(user) {
 
 function buildPosts(posts) {
   let postString = "";
-  posts.forEach(post => {
+  posts.reverse().forEach(post => {
     postString +=
       '<div class="post"><a href="./user.html?' +
       post.user._id +
