@@ -8,7 +8,13 @@ async function getPosts() {
 
 async function createPost() {
   const text = document.getElementById("text").value;
-  await axios.post(hostName + "/posts", { text });
+  await axios.post(
+    hostName + "/posts",
+    { text },
+    {
+      headers: { Authorization: `Bearer ${token}` }
+    }
+  );
   location.reload();
 }
 
@@ -103,7 +109,7 @@ async function signup() {
   window.location = window.location.pathname.replace("register", "index");
 }
 
-function logout(){
+function logout() {
   document.cookie = "token=;Fri, 19 Jun 2000 20:47:11 UTC;path=/";
   window.location = window.location.pathname.replace("logout", "login");
 }
