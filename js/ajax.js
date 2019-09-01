@@ -18,7 +18,7 @@ async function initProfile() {
 }
 
 async function getCurrentUser() {
-  if (document.cookie.token) {
+  if (getCookie('token')) {
     const { data } = await axios.get(hostName + "/user/current");
     document.getElementById("nav").innerHTML +=
       '<a href="' + "./user.html?" + data._id + '">Profile</a>';
@@ -76,4 +76,21 @@ async function login() {
   document.cookie = "token=" + data.token + ";Fri, 19 Jun 2022 20:47:11 UTC;path=/";
   debugger;
   window.location = window.location.pathname.replace("login", "index");
+}
+
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
