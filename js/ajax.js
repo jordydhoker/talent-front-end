@@ -20,9 +20,18 @@ async function initProfile() {
 async function getCurrentUser() {
   const token = getCookie("token");
   if (token) {
-    const { data } = await axios.get(hostName + "/user/current",{ headers: { Authorization: `Bearer ${token}` } });
-    document.getElementById("nav").innerHTML +=
-      '<a href="' + "./user.html?" + data._id + '">Profile</a>';
+    const { data } = await axios.get(hostName + "/user/current", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const userId = document.location.search.replace("?", "");
+    if (data._id === userId) {
+      document.getElementById("nav").innerHTML +=
+        '<a href="' + "./user.html?" + data._id + '"  class="current-page">Profile</a>';
+    } else {
+      document.getElementById("nav").innerHTML +=
+        '<a href="' + "./user.html?" + data._id + '">Profile</a>';
+    }
+    document.getElementById("nav").innerHTML += '<a href="./logout.html">Logout</a>';
   } else {
     document.getElementById("nav").innerHTML +=
       '<a href="./login.html">Login</a><a href="./register.html">Register</a>';
@@ -75,8 +84,22 @@ async function login() {
 
   const { data } = await axios.post(hostName + "/user/login", { email, password });
   document.cookie = "token=" + data.token + ";Fri, 19 Jun 2022 20:47:11 UTC;path=/";
-  debugger;
   window.location = window.location.pathname.replace("login", "index");
+}
+
+async function register() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const { data } = await axios.post(hostName + "/user/register", { name, email, password });
+  document.cookie = "token=" + data.token + ";Fri, 19 Jun 2022 20:47:11 UTC;path=/";
+  window.location = window.location.pathname.replace("register", "index");
+}
+
+function logout(){
+  document.cookie = "token=;Fri, 19 Jun 2000 20:47:11 UTC;path=/";
+  window.location = window.location.pathname.replace("logout", "login");
 }
 
 function getCookie(cname) {

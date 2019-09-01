@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <title>Posts</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <main>
+        <nav  id="nav">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" class="current-page">Register</a>
+        </nav>
+        <h1>Login</h1>
+        <div class="form">
+            <label>name</label>
+            <input type="text" id="name" name="name">
+            <label>Email</label>
+            <input type="text" id="email" name="email">
+            <label>Password</label>
+            <input type="password" id="password" name="password">
+            <button onclick="register()">Register</button>
+        </form>
+    </main>
+</body>
