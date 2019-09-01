@@ -6,6 +6,12 @@ async function getPosts() {
   buildPosts(data);
 }
 
+async function createPost() {
+  const text = document.getElementById("text").value;
+  await axios.post(hostName + "/posts", { text });
+  location.reload();
+}
+
 async function initProfile() {
   const userId = document.location.search.replace("?", "");
   let user = await axios.get(hostName + "/user/" + userId);

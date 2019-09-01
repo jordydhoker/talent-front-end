@@ -9,7 +9,7 @@ body {
 }
 
 main {
-  width: 700px;
+  width: 600px;
   max-width: 95%;
   margin: 0 auto;
 }
@@ -35,6 +35,10 @@ h1 {
   font-size: 2rem;
   margin: 1rem 0;
 }
+h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
 
 .post {
   width: 100%;
@@ -57,10 +61,18 @@ h1 {
   }
 }
 
+.create-post__container {
+  width: 100%;
+}
+
 .form {
+  width: 400px;
+}
+
+.form,
+.create-post__container {
   display: flex;
   flex-direction: column;
-  width: 400px;
   margin: 0 auto;
   input[type="text"],
   input[type="password"],
@@ -69,6 +81,9 @@ h1 {
     background-color: $light-gray;
     border: none;
     border-radius: 2px;
+  }
+  textarea{
+    resize: vertical;
   }
   button {
     padding: 10px;
@@ -94,7 +109,7 @@ h1 {
   padding: 20px;
   border-radius: 4px;
   margin-bottom: 40px;
-  &::after{
+  &::after {
     content: "";
     height: 2px;
     width: 100%;
