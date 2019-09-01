@@ -1,5 +1,5 @@
-//const hostName = "https://jordy-dhoker-talent.herokuapp.com";
-const hostName = "http://localhost:3000";
+const hostName = "https://jordy-dhoker-talent.herokuapp.com";
+//const hostName = "http://localhost:3000";
 
 async function getPosts() {
   const { data } = await axios.get(hostName + "/posts");
